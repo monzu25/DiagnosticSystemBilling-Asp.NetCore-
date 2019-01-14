@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MVC_CityLab.CashReceiveMaster>
+
+@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvestigationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvestigationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalAmount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VoucherNo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VoucherNo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VoucherNo })
+        </td>
+    </tr>
+}
+
+</table>

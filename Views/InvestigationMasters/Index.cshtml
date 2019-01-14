@@ -1,0 +1,119 @@
+﻿@model IEnumerable<MVC_CityLab.InvestigationMaster>
+
+@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Guardian)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SLNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Doctors.DoctorName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Guardian)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NetAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaidAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doctors.DoctorName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.VoucherNo }) |
+            @Html.ActionLink("Details", "Details", new { id = item.VoucherNo }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.VoucherNo })
+        </td>
+    </tr>
+}
+
+</table>

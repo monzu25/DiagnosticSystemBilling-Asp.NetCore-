@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CityLabDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CashReceiveDetails">
+    <Key>
+      <PropertyRef Name="VoucherNo" />
+    </Key>
+    <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="SlNo" Type="Int32" Nullable="false" />
+    <Property Name="InvestigationId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PatientName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Decimal" Precision="12" Scale="2" />
+  </EntityType>
+  <EntityType Name="CashReceiveMaster">
+    <Key>
+      <PropertyRef Name="VoucherNo" />
+    </Key>
+    <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="InvestigationId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="12" Scale="2" />
+  </EntityType>
+  <EntityType Name="Doctors">
+    <Key>
+      <PropertyRef Name="DoctorID" />
+    </Key>
+    <Property Name="DoctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="InvestigationMaster" Relationship="Self.FK__Investiga__Docto__33D4B598" FromRole="Doctors" ToRole="InvestigationMaster" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="JoinDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Deparment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Salary" Type="Decimal" Precision="12" Scale="2" />
+  </EntityType>
+  <EntityType Name="InvestigationDetails">
+    <Key>
+      <PropertyRef Name="VoucherNo" />
+      <PropertyRef Name="SlNo" />
+    </Key>
+    <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="SlNo" Type="Int32" Nullable="false" />
+    <Property Name="TestName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TestGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReportGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fee" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="Amount" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="Commision" Type="Decimal" Precision="12" Scale="2" />
+    <NavigationProperty Name="Investigations" Relationship="Self.FK__Investiga__TestN__32E0915F" FromRole="InvestigationDetails" ToRole="Investigations" />
+  </EntityType>
+  <EntityType Name="InvestigationMaster">
+    <Key>
+      <PropertyRef Name="VoucherNo" />
+    </Key>
+    <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Guardian" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SLNo" Type="Int32" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DoctorID" Type="Int32" />
+    <Property Name="Total" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="Discount" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="NetAmt" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="PaidAmt" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="DueAmt" Type="Decimal" Precision="12" Scale="2" />
+    <NavigationProperty Name="Doctors" Relationship="Self.FK__Investiga__Docto__33D4B598" FromRole="InvestigationMaster" ToRole="Doctors" />
+  </EntityType>
+  <EntityType Name="Investigations">
+    <Key>
+      <PropertyRef Name="TestName" />
+    </Key>
+    <Property Name="SLNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TestGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReportGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fee" Type="Decimal" Precision="12" Scale="2" />
+    <NavigationProperty Name="InvestigationDetails" Relationship="Self.FK__Investiga__TestN__32E0915F" FromRole="Investigations" ToRole="InvestigationDetails" />
+  </EntityType>
+  <EntityType Name="LoginUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReportSetup">
+    <Key>
+      <PropertyRef Name="SlNo" />
+    </Key>
+    <Property Name="SlNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Unites" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NormalValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PreparedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Investiga__Docto__33D4B598">
+    <End Role="Doctors" Type="Self.Doctors" Multiplicity="0..1" />
+    <End Role="InvestigationMaster" Type="Self.InvestigationMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctors">
+        <PropertyRef Name="DoctorID" />
+      </Principal>
+      <Dependent Role="InvestigationMaster">
+        <PropertyRef Name="DoctorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Investiga__TestN__32E0915F">
+    <End Role="Investigations" Type="Self.Investigations" Multiplicity="0..1" />
+    <End Role="InvestigationDetails" Type="Self.InvestigationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investigations">
+        <PropertyRef Name="TestName" />
+      </Principal>
+      <Dependent Role="InvestigationDetails">
+        <PropertyRef Name="TestName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CityLabDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CashReceiveDetails" EntityType="Self.CashReceiveDetails" />
+    <EntitySet Name="CashReceiveMaster" EntityType="Self.CashReceiveMaster" />
+    <EntitySet Name="Doctors" EntityType="Self.Doctors" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="InvestigationDetails" EntityType="Self.InvestigationDetails" />
+    <EntitySet Name="InvestigationMaster" EntityType="Self.InvestigationMaster" />
+    <EntitySet Name="Investigations" EntityType="Self.Investigations" />
+    <EntitySet Name="LoginUser" EntityType="Self.LoginUser" />
+    <EntitySet Name="ReportSetup" EntityType="Self.ReportSetup" />
+    <AssociationSet Name="FK__Investiga__Docto__33D4B598" Association="Self.FK__Investiga__Docto__33D4B598">
+      <End Role="Doctors" EntitySet="Doctors" />
+      <End Role="InvestigationMaster" EntitySet="InvestigationMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Investiga__TestN__32E0915F" Association="Self.FK__Investiga__TestN__32E0915F">
+      <End Role="Investigations" EntitySet="Investigations" />
+      <End Role="InvestigationDetails" EntitySet="InvestigationDetails" />
+    </AssociationSet>
+    <FunctionImport Name="RegisterUser" ReturnType="Collection(String)">
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="UserID" Mode="In" Type="String" />
+      <Parameter Name="UserPassword" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spValidateUserLogin" ReturnType="Collection(String)">
+      <Parameter Name="LoginID" Mode="In" Type="String" />
+      <Parameter Name="LoginPassword" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

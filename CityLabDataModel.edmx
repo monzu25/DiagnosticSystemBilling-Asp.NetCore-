@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CityLabDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CashReceiveDetails">
+          <Key>
+            <PropertyRef Name="VoucherNo" />
+          </Key>
+          <Property Name="VoucherNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="SlNo" Type="int" Nullable="false" />
+          <Property Name="InvestigationId" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PatientName" Type="varchar" MaxLength="200" />
+          <Property Name="Amount" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="CashReceiveMaster">
+          <Key>
+            <PropertyRef Name="VoucherNo" />
+          </Key>
+          <Property Name="VoucherNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="InvestigationId" Type="varchar" MaxLength="50" />
+          <Property Name="PatientName" Type="varchar" MaxLength="50" />
+          <Property Name="TotalAmount" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="DoctorID" />
+          </Key>
+          <Property Name="DoctorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Qualification" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="JoinDate" Type="varchar" MaxLength="50" />
+          <Property Name="Deparment" Type="varchar" MaxLength="50" />
+          <Property Name="Salary" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="InvestigationDetails">
+          <Key>
+            <PropertyRef Name="VoucherNo" />
+            <PropertyRef Name="SlNo" />
+          </Key>
+          <Property Name="VoucherNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="SlNo" Type="int" Nullable="false" />
+          <Property Name="TestName" Type="varchar" MaxLength="50" />
+          <Property Name="TestGroup" Type="varchar" MaxLength="50" />
+          <Property Name="ReportGroup" Type="varchar" MaxLength="50" />
+          <Property Name="Fee" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="Amount" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="Commision" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="InvestigationMaster">
+          <Key>
+            <PropertyRef Name="VoucherNo" />
+          </Key>
+          <Property Name="VoucherNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="PatientName" Type="varchar" MaxLength="50" />
+          <Property Name="Guardian" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="SLNo" Type="int" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="DoctorID" Type="int" />
+          <Property Name="Total" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="NetAmt" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="PaidAmt" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="DueAmt" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="Investigations">
+          <Key>
+            <PropertyRef Name="TestName" />
+          </Key>
+          <Property Name="SLNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TestGroup" Type="varchar" MaxLength="50" />
+          <Property Name="ReportGroup" Type="varchar" MaxLength="50" />
+          <Property Name="Fee" Type="decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="LoginUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="FirstName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReportSetup">
+          <Key>
+            <PropertyRef Name="SlNo" />
+          </Key>
+          <Property Name="SlNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoucherNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatientName" Type="varchar" MaxLength="50" />
+          <Property Name="Result" Type="varchar" MaxLength="50" />
+          <Property Name="Unites" Type="varchar" MaxLength="50" />
+          <Property Name="NormalValue" Type="varchar" MaxLength="50" />
+          <Property Name="PreparedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Investiga__Docto__33D4B598">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="0..1" />
+          <End Role="InvestigationMaster" Type="Self.InvestigationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="DoctorID" />
+            </Principal>
+            <Dependent Role="InvestigationMaster">
+              <PropertyRef Name="DoctorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investiga__TestN__32E0915F">
+          <End Role="Investigations" Type="Self.Investigations" Multiplicity="0..1" />
+          <End Role="InvestigationDetails" Type="Self.InvestigationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investigations">
+              <PropertyRef Name="TestName" />
+            </Principal>
+            <Dependent Role="InvestigationDetails">
+              <PropertyRef Name="TestName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="RegisterUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="UserID" Type="varchar" Mode="In" />
+          <Parameter Name="UserPassword" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spValidateUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LoginID" Type="varchar" Mode="In" />
+          <Parameter Name="LoginPassword" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="CityLabDBModelStoreContainer">
+          <EntitySet Name="CashReceiveDetails" EntityType="Self.CashReceiveDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CashReceiveMaster" EntityType="Self.CashReceiveMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvestigationDetails" EntityType="Self.InvestigationDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvestigationMaster" EntityType="Self.InvestigationMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Investigations" EntityType="Self.Investigations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginUser" EntityType="Self.LoginUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportSetup" EntityType="Self.ReportSetup" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Investiga__Docto__33D4B598" Association="Self.FK__Investiga__Docto__33D4B598">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="InvestigationMaster" EntitySet="InvestigationMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investiga__TestN__32E0915F" Association="Self.FK__Investiga__TestN__32E0915F">
+            <End Role="Investigations" EntitySet="Investigations" />
+            <End Role="InvestigationDetails" EntitySet="InvestigationDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CityLabDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CashReceiveDetails">
+          <Key>
+            <PropertyRef Name="VoucherNo" />
+          </Key>
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="SlNo" Type="Int32" Nullable="false" />
+          <Property Name="InvestigationId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="CashReceiveMaster">
+          <Key>
+            <PropertyRef Name="VoucherNo" />
+          </Key>
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="InvestigationId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="DoctorID" />
+          </Key>
+          <Property Name="DoctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="InvestigationMaster" Relationship="Self.FK__Investiga__Docto__33D4B598" FromRole="Doctors" ToRole="InvestigationMaster" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JoinDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deparment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salary" Type="Decimal" Precision="12" Scale="2" />
+        </EntityType>
+        <EntityType Name="InvestigationDetails">
+          <Key>
+            <PropertyRef Name="VoucherNo" />
+            <PropertyRef Name="SlNo" />
+          </Key>
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="SlNo" Type="Int32" Nullable="false" />
+          <Property Name="TestName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TestGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReportGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fee" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="Commision" Type="Decimal" Precision="12" Scale="2" />
+          <NavigationProperty Name="Investigations" Relationship="Self.FK__Investiga__TestN__32E0915F" FromRole="InvestigationDetails" ToRole="Investigations" />
+        </EntityType>
+        <EntityType Name="InvestigationMaster">
+          <Key>
+            <PropertyRef Name="VoucherNo" />
+          </Key>
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Guardian" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SLNo" Type="Int32" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DoctorID" Type="Int32" />
+          <Property Name="Total" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="NetAmt" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="PaidAmt" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="DueAmt" Type="Decimal" Precision="12" Scale="2" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FK__Investiga__Docto__33D4B598" FromRole="InvestigationMaster" ToRole="Doctors" />
+        </EntityType>
+        <EntityType Name="Investigations">
+          <Key>
+            <PropertyRef Name="TestName" />
+          </Key>
+          <Property Name="SLNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TestGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReportGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fee" Type="Decimal" Precision="12" Scale="2" />
+          <NavigationProperty Name="InvestigationDetails" Relationship="Self.FK__Investiga__TestN__32E0915F" FromRole="Investigations" ToRole="InvestigationDetails" />
+        </EntityType>
+        <EntityType Name="LoginUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReportSetup">
+          <Key>
+            <PropertyRef Name="SlNo" />
+          </Key>
+          <Property Name="SlNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoucherNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Unites" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NormalValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PreparedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Investiga__Docto__33D4B598">
+          <End Role="Doctors" Type="Self.Doctors" Multiplicity="0..1" />
+          <End Role="InvestigationMaster" Type="Self.InvestigationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctors">
+              <PropertyRef Name="DoctorID" />
+            </Principal>
+            <Dependent Role="InvestigationMaster">
+              <PropertyRef Name="DoctorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Investiga__TestN__32E0915F">
+          <End Role="Investigations" Type="Self.Investigations" Multiplicity="0..1" />
+          <End Role="InvestigationDetails" Type="Self.InvestigationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Investigations">
+              <PropertyRef Name="TestName" />
+            </Principal>
+            <Dependent Role="InvestigationDetails">
+              <PropertyRef Name="TestName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CityLabDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CashReceiveDetails" EntityType="Self.CashReceiveDetails" />
+          <EntitySet Name="CashReceiveMaster" EntityType="Self.CashReceiveMaster" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="InvestigationDetails" EntityType="Self.InvestigationDetails" />
+          <EntitySet Name="InvestigationMaster" EntityType="Self.InvestigationMaster" />
+          <EntitySet Name="Investigations" EntityType="Self.Investigations" />
+          <EntitySet Name="LoginUser" EntityType="Self.LoginUser" />
+          <EntitySet Name="ReportSetup" EntityType="Self.ReportSetup" />
+          <AssociationSet Name="FK__Investiga__Docto__33D4B598" Association="Self.FK__Investiga__Docto__33D4B598">
+            <End Role="Doctors" EntitySet="Doctors" />
+            <End Role="InvestigationMaster" EntitySet="InvestigationMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Investiga__TestN__32E0915F" Association="Self.FK__Investiga__TestN__32E0915F">
+            <End Role="Investigations" EntitySet="Investigations" />
+            <End Role="InvestigationDetails" EntitySet="InvestigationDetails" />
+          </AssociationSet>
+          <FunctionImport Name="RegisterUser" ReturnType="Collection(String)">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="UserID" Mode="In" Type="String" />
+            <Parameter Name="UserPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spValidateUserLogin" ReturnType="Collection(String)">
+            <Parameter Name="LoginID" Mode="In" Type="String" />
+            <Parameter Name="LoginPassword" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CityLabDBModelStoreContainer" CdmEntityContainer="CityLabDBEntities">
+          <EntitySetMapping Name="CashReceiveDetails">
+            <EntityTypeMapping TypeName="CityLabDBModel.CashReceiveDetails">
+              <MappingFragment StoreEntitySet="CashReceiveDetails">
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SlNo" ColumnName="SlNo" />
+                <ScalarProperty Name="InvestigationId" ColumnName="InvestigationId" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CashReceiveMaster">
+            <EntityTypeMapping TypeName="CityLabDBModel.CashReceiveMaster">
+              <MappingFragment StoreEntitySet="CashReceiveMaster">
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="InvestigationId" ColumnName="InvestigationId" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="CityLabDBModel.Doctors">
+              <MappingFragment StoreEntitySet="Doctors">
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="CityLabDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="Deparment" ColumnName="Deparment" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvestigationDetails">
+            <EntityTypeMapping TypeName="CityLabDBModel.InvestigationDetails">
+              <MappingFragment StoreEntitySet="InvestigationDetails">
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SlNo" ColumnName="SlNo" />
+                <ScalarProperty Name="TestName" ColumnName="TestName" />
+                <ScalarProperty Name="TestGroup" ColumnName="TestGroup" />
+                <ScalarProperty Name="ReportGroup" ColumnName="ReportGroup" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Commision" ColumnName="Commision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvestigationMaster">
+            <EntityTypeMapping TypeName="CityLabDBModel.InvestigationMaster">
+              <MappingFragment StoreEntitySet="InvestigationMaster">
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="Guardian" ColumnName="Guardian" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SLNo" ColumnName="SLNo" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="NetAmt" ColumnName="NetAmt" />
+                <ScalarProperty Name="PaidAmt" ColumnName="PaidAmt" />
+                <ScalarProperty Name="DueAmt" ColumnName="DueAmt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Investigations">
+            <EntityTypeMapping TypeName="CityLabDBModel.Investigations">
+              <MappingFragment StoreEntitySet="Investigations">
+                <ScalarProperty Name="SLNo" ColumnName="SLNo" />
+                <ScalarProperty Name="TestName" ColumnName="TestName" />
+                <ScalarProperty Name="TestGroup" ColumnName="TestGroup" />
+                <ScalarProperty Name="ReportGroup" ColumnName="ReportGroup" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginUser">
+            <EntityTypeMapping TypeName="CityLabDBModel.LoginUser">
+              <MappingFragment StoreEntitySet="LoginUser">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportSetup">
+            <EntityTypeMapping TypeName="CityLabDBModel.ReportSetup">
+              <MappingFragment StoreEntitySet="ReportSetup">
+                <ScalarProperty Name="SlNo" ColumnName="SlNo" />
+                <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Unites" ColumnName="Unites" />
+                <ScalarProperty Name="NormalValue" ColumnName="NormalValue" />
+                <ScalarProperty Name="PreparedBy" ColumnName="PreparedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RegisterUser" FunctionName="CityLabDBModel.Store.RegisterUser" />
+          <FunctionImportMapping FunctionImportName="spValidateUserLogin" FunctionName="CityLabDBModel.Store.spValidateUserLogin" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

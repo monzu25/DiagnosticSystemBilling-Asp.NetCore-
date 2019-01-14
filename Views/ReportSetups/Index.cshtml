@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MVC_CityLab.ReportSetup>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Result)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unites)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormalValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreparedBy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Result)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unites)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormalValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreparedBy)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SlNo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SlNo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SlNo })
+        </td>
+    </tr>
+}
+
+</table>
